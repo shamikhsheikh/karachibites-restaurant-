@@ -1,0 +1,203 @@
+[
+  {
+    "orderId": "KB-5683",
+    "customer": {
+      "name": "Saad Ahmed",
+      "phone": "0300-8765432",
+      "address": "House 88, Block 6, Gulshan-e-Iqbal"
+    },
+    "branch": "Gulshan-e-Iqbal",
+    "items": [
+      {
+        "id": 4,
+        "name": "Chicken Karahi (half)",
+        "price": 1250,
+        "qty": 1
+      },
+      {
+        "id": 10,
+        "name": "Doodh Patti Chai",
+        "price": 150,
+        "qty": 2
+      }
+    ],
+    "subtotal": 1550,
+    "deliveryFee": 150,
+    "total": 1700,
+    "status": "Preparing",
+    "notes": "Less spicy please",
+    "createdAt": "2026-10-11T11:08:25.670Z",
+    "updatedAt": "2026-10-11T11:08:25.683Z"
+  },
+  {
+    "orderId": "KB-4067",
+    "customer": {
+      "name": "Saad Ahmed",
+      "phone": "0300-8765432",
+      "address": "House 88, Block 6, Gulshan-e-Iqbal"
+    },
+    "branch": "Gulshan-e-Iqbal",
+    "items": [
+      {
+        "id": 4,
+        "name": "Chicken Karahi (half)",
+        "price": 1250,
+        "qty": 1
+      },
+      {
+        "id": 10,
+        "name": "Doodh Patti Chai",
+        "price": 150,
+        "qty": 2
+      }
+    ],
+    "subtotal": 1550,
+    "deliveryFee": 150,
+    "total": 1700,
+    "status": "Preparing",
+    "notes": "Less spicy please",
+    "createdAt": "2026-10-11T10:43:00.763Z",
+    "updatedAt": "2026-10-11T10:43:00.772Z"
+  },
+  {
+    "orderId": "KB-3905",
+    "customer": {
+      "name": "Saad Ahmed",
+      "phone": "0300-8765432",
+      "address": "House 88, Block 6, Gulshan-e-Iqbal"
+    },
+    "branch": "Gulshan-e-Iqbal",
+    "items": [
+      {
+        "id": 4,
+        "name": "Chicken Karahi (half)",
+        "price": 1250,
+        "qty": 1
+      },
+      {
+        "id": 10,
+        "name": "Doodh Patti Chai",
+        "price": 150,
+        "qty": 2
+      }
+    ],
+    "subtotal": 1550,
+    "deliveryFee": 150,
+    "total": 1700,
+    "status": "Preparing",
+    "notes": "Less spicy please",
+    "createdAt": "2026-10-11T10:02:56.616Z",
+    "updatedAt": "2026-10-11T10:02:56.629Z"
+  },
+  {
+    "orderId": "KB-9430",
+    "customer": {
+      "name": "Zainab Ali",
+      "phone": "03001234567",
+      "address": "House 12, Block 4, Clifton"
+    },
+    "branch": "Clifton",
+    "items": [
+      {
+        "id": 1,
+        "name": "Chicken Malai Boti",
+        "price": 850,
+        "qty": 1
+      }
+    ],
+    "subtotal": 850,
+    "deliveryFee": 150,
+    "total": 1000,
+    "status": "Preparing",
+    "notes": "",
+    "createdAt": "2026-10-10T16:45:45.714Z",
+    "updatedAt": "2026-10-10T16:48:34.122Z"
+  },
+  {
+    "orderId": "KB-1001",
+    "customer": {
+      "name": "Hamza Khan",
+      "phone": "0300-1234567",
+      "address": "House 42, Street 8, Block 4, Clifton"
+    },
+    "branch": "Clifton",
+    "items": [
+      {
+        "id": 1,
+        "name": "Chicken Malai Boti",
+        "price": 850,
+        "qty": 2
+      },
+      {
+        "id": 5,
+        "name": "Chicken Biryani",
+        "price": 550,
+        "qty": 1
+      }
+    ],
+    "subtotal": 2250,
+    "deliveryFee": 150,
+    "total": 2400,
+    "status": "Out for Delivery",
+    "notes": "Please bring mint chutney extra.",
+    "createdAt": "2026-10-10T16:09:51.558Z"
+  },
+  {
+    "orderId": "KB-1002",
+    "customer": {
+      "name": "Ayesha Siddiqui",
+      "phone": "0321-9876543",
+      "address": "Apartment 5B, Al-Noor Heights, Gulshan-e-Iqbal"
+    },
+    "branch": "Gulshan-e-Iqbal",
+    "items": [
+      {
+        "id": 3,
+        "name": "Mutton Karahi (half)",
+        "price": 1650,
+        "qty": 1
+      },
+      {
+        "id": 10,
+        "name": "Doodh Patti Chai",
+        "price": 150,
+        "qty": 2
+      }
+    ],
+    "subtotal": 1950,
+    "deliveryFee": 150,
+    "total": 2100,
+    "status": "Preparing",
+    "notes": "Make it medium spicy.",
+    "createdAt": "2026-10-10T16:29:51.558Z"
+  },
+  {
+    "orderId": "KB-1003",
+    "customer": {
+      "name": "Bilal Farooq",
+      "phone": "0333-5551234",
+      "address": "House B-14, Block D, North Nazimabad"
+    },
+    "branch": "North Nazimabad",
+    "items": [
+      {
+        "id": 7,
+        "name": "Zinger Paratha Roll",
+        "price": 450,
+        "qty": 2
+      },
+      {
+        "id": 9,
+        "name": "Mint Margarita",
+        "price": 220,
+        "qty": 2
+      }
+    ],
+    "subtotal": 1340,
+    "deliveryFee": 150,
+    "total": 1490,
+    "status": "Delivered",
+    "notes": "",
+    "createdAt": "2026-10-10T14:44:51.558Z"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "name": "Karachi Bites",
+  "description": "Authentic Pakistani dining and online ordering experience featuring artisanal BBQ, signature karahi, aromatic biryani, and timeless Karachi flavours.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

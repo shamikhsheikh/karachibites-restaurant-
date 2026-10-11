@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F4E8D3;
+    color: #201D22;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom Islamic / Mughal subtle geometric patterns */
+.bg-islamic-pattern-dark {
+  background-image: radial-gradient(rgba(215, 174, 85, 0.08) 1px, transparent 1px), radial-gradient(rgba(215, 174, 85, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.bg-islamic-jaali-dark {
+  background-image: 
+    linear-gradient(45deg, rgba(215, 174, 85, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(215, 174, 85, 0.03) 25%, transparent 25%),
+    linear-gradient(135deg, rgba(215, 174, 85, 0.03) 25%, transparent 25%),
+    linear-gradient(-135deg, rgba(215, 174, 85, 0.03) 25%, transparent 25%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 0, 20px -20px, 0px 20px;
+}
+
+.bg-islamic-pattern-light {
+  background-image: radial-gradient(rgba(32, 29, 34, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Hide scrollbar for category tabs on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

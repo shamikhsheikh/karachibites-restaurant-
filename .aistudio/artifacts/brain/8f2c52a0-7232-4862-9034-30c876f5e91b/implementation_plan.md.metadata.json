@@ -1,0 +1,6 @@
+{
+  "summary":  "Step-by-step guide and implementation plan for accessing the AI Studio Secrets panel, entering ADMIN_USERNAME, ADMIN_EMAIL, ADMIN_PASSWORD, and DATA_DIR, and verifying admin authentication without altering any existing code or menu items.",
+  "updatedAt":  "2026-10-11T11:03:31.282260745Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}
