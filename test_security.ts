@@ -42,17 +42,17 @@ async function runTests() {
   });
   assert(anonPatchRes.status === 401, 'Logged-out visitor calling PATCH /api/admin/orders/:id/status is rejected (401)');
 
-  // 3. Admin login with valid credentials (Username: Karachi Bytes)
+  // 3. Admin login with valid credentials (Username: Karachi Bites)
   const adminLoginRes = await fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      username: 'Karachi Bytes',
+      username: 'Karachi Bites',
       password: 'KarachiBites@2026!',
     }),
   });
   const adminData = await adminLoginRes.json();
-  assert(adminLoginRes.status === 200, 'Scenario 1A: Authorized admin logs in with username "Karachi Bytes" (200 OK)');
+  assert(adminLoginRes.status === 200, 'Scenario 1A: Authorized admin logs in with username "Karachi Bites" (200 OK)');
   assert(adminData.token && adminData.user?.role === 'admin', 'Admin session token received with role "admin"');
   const adminToken = adminData.token;
 
@@ -61,7 +61,7 @@ async function runTests() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: 'mshamikhsheikh2@gmail.com',
+      email: 'karachibites@gmail.com',
       password: 'KarachiBites@2026!',
     }),
   });
@@ -72,7 +72,7 @@ async function runTests() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      username: 'Karachi Bytes',
+      username: 'Karachi Bites',
       password: 'WrongPassword123!',
     }),
   });

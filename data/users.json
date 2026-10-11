@@ -1,0 +1,22 @@
+[
+  {
+    "id": "usr_admin_kb",
+    "username": "Karachi Bites",
+    "email": "karachibites@gmail.com",
+    "passwordHash": "8f0cbcbd17b273e6b6c10cf9186e0edc8937c8715836063df706d31aa2386042955ff87e3e232ce96f2bcb9c59ebd612e374f8896056ca4a37e2ce4f1b5c3f35",
+    "salt": "20b438655388de4706747abc3589eb52",
+    "role": "admin",
+    "isActive": true,
+    "createdAt": "2026-10-11T17:15:38.377Z"
+  },
+  {
+    "id": "usr_customer_demo",
+    "username": "customer_ali",
+    "email": "customer@karachibites.pk",
+    "passwordHash": "36057a47b922237e7dd794b2ac475d224ba899b67f6e4b319b4272532ee474039cfabe65899228160d7d38c0dde1de64a679f6cbe8218504b9f62c70e1c0dfb1",
+    "salt": "3944f976b4919854d269aef960ea153b",
+    "role": "customer",
+    "isActive": true,
+    "createdAt": "2026-10-11T17:15:38.458Z"
+  }
+]

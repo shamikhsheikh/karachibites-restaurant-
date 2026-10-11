@@ -16,7 +16,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
   const [currentUser, setCurrentUser] = useState<{ username: string; email: string; role: string } | null>(null);
   
   // Default login credentials hint
-  const [identifier, setIdentifier] = useState('Karachi Bytes');
+  const [identifier, setIdentifier] = useState('Karachi Bites');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -246,11 +246,11 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="Karachi Bytes or owner email"
+                  placeholder="Karachi Bites or owner email"
                   className="w-full px-4 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-sm text-[#201D22] focus:outline-none focus:border-[#D7AE55]"
                 />
                 <span className="text-[10px] text-[#8C8479] block mt-1">
-                  Accepts username <strong className="text-[#201D22]">Karachi Bytes</strong> or owner email
+                  Accepts username <strong className="text-[#201D22]">Karachi Bites</strong> or owner email
                 </span>
               </div>
               <div>
