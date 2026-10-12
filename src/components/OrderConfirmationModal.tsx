@@ -74,19 +74,19 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="space-y-3">
+        <div className="space-y-3 pt-2">
           <button
             onClick={() => onTrackOrder(order.orderId, order.customer.phone)}
-            className="w-full py-3 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm"
+            className="w-full py-3.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98] cursor-pointer touch-manipulation min-h-[48px]"
           >
-            <Compass className="w-4 h-4" />
+            <Compass className="w-4 h-4 shrink-0" />
             <span>TRACK LIVE PROGRESS</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
           </button>
 
           <button
             onClick={onClose}
-            className="w-full py-2.5 text-xs text-[#6E675F] hover:text-[#201D22] font-medium"
+            className="w-full py-3 text-xs text-[#6E675F] hover:text-[#201D22] font-medium rounded-xl hover:bg-[#201D22]/5 transition-colors cursor-pointer touch-manipulation min-h-[44px] flex items-center justify-center active:scale-[0.98]"
           >
             Back to Karachi Bites Menu
           </button>

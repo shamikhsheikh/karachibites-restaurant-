@@ -32,13 +32,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOrderNow }) => {
             Order your favourite Pakistani dishes and enjoy authentic flavours wherever you are.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
             <button
               onClick={onOrderNow}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-xl hover:shadow-[#D7AE55]/20 active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl sm:rounded font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-xl hover:shadow-[#D7AE55]/20 active:scale-[0.98] w-full sm:w-auto min-h-[44px] cursor-pointer touch-manipulation"
             >
               <span>ORDER NOW</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0" />
             </button>
           </div>
 

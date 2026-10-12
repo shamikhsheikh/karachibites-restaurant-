@@ -47,20 +47,20 @@ export const Hero: React.FC<HeroProps> = ({ onOrderNow, onExploreMenu }) => {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
                 {/* Small gold CTA button */}
                 <button
                   onClick={onOrderNow}
-                  className="group inline-flex items-center gap-2.5 px-6 py-3 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#D7AE55]/20 active:scale-[0.98]"
+                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:py-3 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl sm:rounded font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#D7AE55]/20 active:scale-[0.98] min-h-[44px] cursor-pointer touch-manipulation w-full sm:w-auto"
                 >
                   <span>ORDER NOW</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0" />
                 </button>
 
                 {/* Secondary link */}
                 <button
                   onClick={onExploreMenu}
-                  className="inline-flex items-center px-6 py-3 border border-[#D7AE55]/40 text-[#F7EBD2] hover:text-[#D7AE55] hover:border-[#D7AE55] hover:bg-[#D7AE55]/10 rounded font-medium text-xs uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3.5 sm:py-3 border border-[#D7AE55]/40 text-[#F7EBD2] hover:text-[#D7AE55] hover:border-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-xl sm:rounded font-medium text-xs uppercase tracking-wider transition-all duration-200 min-h-[44px] cursor-pointer touch-manipulation w-full sm:w-auto active:scale-[0.98]"
                 >
                   EXPLORE MENU
                 </button>

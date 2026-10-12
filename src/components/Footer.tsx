@@ -48,38 +48,53 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTrack, onOpenAdmin }) => {
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#D7AE55]">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs text-[#BDB4A5]">
+            <ul className="space-y-1 text-xs text-[#BDB4A5]">
               <li>
-                <button onClick={() => scrollTo('hero')} className="hover:text-[#D7AE55] transition-colors">
+                <button
+                  onClick={() => scrollTo('hero')}
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px] flex items-center"
+                >
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('menu-section')} className="hover:text-[#D7AE55] transition-colors">
+                <button
+                  onClick={() => scrollTo('menu-section')}
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px] flex items-center"
+                >
                   Menu
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('chefs-special')} className="hover:text-[#D7AE55] transition-colors">
+                <button
+                  onClick={() => scrollTo('chefs-special')}
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px] flex items-center"
+                >
                   Chef's Special
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('sweet-finish')} className="hover:text-[#D7AE55] transition-colors">
+                <button
+                  onClick={() => scrollTo('sweet-finish')}
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px] flex items-center"
+                >
                   Traditional Desserts
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('about')} className="hover:text-[#D7AE55] transition-colors">
+                <button
+                  onClick={() => scrollTo('about')}
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px] flex items-center"
+                >
                   About & Branches
                 </button>
               </li>
               <li>
                 <button
                   onClick={onOpenTrack}
-                  className="hover:text-[#D7AE55] transition-colors flex items-center gap-1.5 text-[#E8C878]"
+                  className="hover:text-[#D7AE55] active:text-[#D7AE55] transition-colors flex items-center gap-1.5 text-[#E8C878] py-2 px-1 rounded cursor-pointer touch-manipulation min-h-[36px]"
                 >
-                  <Compass className="w-3.5 h-3.5" />
+                  <Compass className="w-4 h-4 shrink-0" />
                   <span>Track Order</span>
                 </button>
               </li>
@@ -111,14 +126,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTrack, onOpenAdmin }) => {
 
         {/* Bottom Bar with Staff Portal link */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C8479]">
-          <p>© {new Date().getFullYear()} Karachi Bites. All rights reserved. Authentic Pakistani Flavours.</p>
+          <p className="text-center sm:text-left">© {new Date().getFullYear()} Karachi Bites. All rights reserved. Authentic Pakistani Flavours.</p>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
             <button
               onClick={onOpenAdmin}
-              className="flex items-center gap-1.5 hover:text-[#D7AE55] transition-colors py-1 px-2 rounded border border-white/10 hover:border-[#D7AE55]/40"
+              className="flex items-center justify-center gap-2 hover:text-[#D7AE55] active:text-[#D7AE55] transition-all py-2.5 px-3.5 rounded-xl border border-white/10 hover:border-[#D7AE55]/40 hover:bg-[#D7AE55]/10 active:scale-95 cursor-pointer touch-manipulation min-h-[44px] w-full sm:w-auto"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D7AE55]" />
+              <ShieldCheck className="w-4 h-4 text-[#D7AE55] shrink-0" />
               <span>Staff Management Portal</span>
             </button>
           </div>

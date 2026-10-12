@@ -259,13 +259,14 @@ export default function App() {
 
       {/* Mobile Floating Sticky Cart Bar (when items in cart) */}
       {totalCartCount > 0 && (
-        <div className="fixed bottom-4 left-4 right-4 z-40 sm:hidden">
+        <div className="fixed bottom-4 left-4 right-4 z-40 sm:hidden pb-[env(safe-area-inset-bottom,0px)]">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="w-full py-3.5 px-5 rounded-2xl bg-[#1B1924] text-[#F7EBD2] border border-[#D7AE55]/40 shadow-2xl flex items-center justify-between font-medium text-xs tracking-wider uppercase active:scale-[0.99] transition-transform"
+            className="w-full py-4 px-5 rounded-2xl bg-[#1B1924] text-[#F7EBD2] border border-[#D7AE55]/40 shadow-2xl flex items-center justify-between font-medium text-xs tracking-wider uppercase active:scale-[0.98] transition-transform cursor-pointer touch-manipulation min-h-[50px]"
+            aria-label={`View Cart with ${totalCartCount} items`}
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-[#D7AE55] text-[#1B1924] flex items-center justify-center font-bold font-mono text-[11px]">
+              <div className="w-6 h-6 rounded-full bg-[#D7AE55] text-[#1B1924] flex items-center justify-center font-bold font-mono text-[11px] shrink-0">
                 {totalCartCount}
               </div>
               <span className="font-serif text-sm font-semibold tracking-normal text-[#E8C878]">
@@ -276,7 +277,7 @@ export default function App() {
               <span className="font-mono font-bold text-[#F7EBD2]">
                 Rs. {totalCartSubtotal}
               </span>
-              <ShoppingBag className="w-4 h-4 text-[#D7AE55]" />
+              <ShoppingBag className="w-4 h-4 text-[#D7AE55] shrink-0" />
             </div>
           </button>
         </div>

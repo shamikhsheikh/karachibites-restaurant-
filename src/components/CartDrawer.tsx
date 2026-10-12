@@ -51,7 +51,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full text-[#BDB4A5] hover:text-[#F7EBD2] hover:bg-white/10 transition-colors"
+              className="p-2.5 rounded-full text-[#BDB4A5] hover:text-[#F7EBD2] hover:bg-white/10 active:scale-95 transition-all cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Close Cart"
             >
               <X className="w-5 h-5" />
@@ -104,23 +104,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       </div>
 
                       {/* Quantity Stepper */}
-                      <div className="flex items-center gap-2 mt-1.5">
+                      <div className="flex items-center gap-1 sm:gap-2 mt-2">
                         <button
                           onClick={() => onUpdateQty(menuItem.id, -1)}
-                          className="w-6 h-6 rounded border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] transition-colors"
+                          className="w-8 h-8 rounded-lg border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 transition-colors cursor-pointer touch-manipulation min-w-[32px] min-h-[32px]"
                           aria-label="Decrease quantity"
                         >
-                          <Minus className="w-3 h-3" />
+                          <Minus className="w-3.5 h-3.5" />
                         </button>
-                        <span className="text-xs font-bold font-mono px-1">
+                        <span className="text-xs font-bold font-mono px-2 py-1 min-w-[24px] text-center">
                           {qty}
                         </span>
                         <button
                           onClick={() => onUpdateQty(menuItem.id, 1)}
-                          className="w-6 h-6 rounded border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] transition-colors"
+                          className="w-8 h-8 rounded-lg border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 transition-colors cursor-pointer touch-manipulation min-w-[32px] min-h-[32px]"
                           aria-label="Increase quantity"
                         >
-                          <Plus className="w-3 h-3" />
+                          <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </div>
@@ -128,7 +128,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     {/* Remove */}
                     <button
                       onClick={() => onRemoveItem(menuItem.id)}
-                      className="p-1.5 text-[#8C8479] hover:text-red-700 transition-colors"
+                      className="p-2.5 text-[#8C8479] hover:text-red-700 active:text-red-800 transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-red-50"
                       aria-label="Remove item"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -141,7 +141,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
           {/* Footer Summary & Checkout Action */}
           {cartItems.length > 0 && (
-            <div className="p-6 border-t border-[#201D22]/10 bg-white space-y-4">
+            <div className="p-4 sm:p-6 border-t border-[#201D22]/10 bg-white space-y-4">
               <div className="space-y-1.5 text-xs">
                 <div className="flex justify-between text-[#6E675F]">
                   <span>Subtotal</span>
@@ -165,10 +165,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
               <button
                 onClick={onProceedToCheckout}
-                className="w-full py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.99]"
+                className="w-full py-4 sm:py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98] cursor-pointer touch-manipulation min-h-[48px]"
               >
                 <span>PROCEED TO CHECKOUT</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </button>
             </div>
           )}

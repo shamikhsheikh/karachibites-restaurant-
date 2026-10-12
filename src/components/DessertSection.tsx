@@ -45,6 +45,7 @@ export const DessertSection: React.FC<DessertSectionProps> = ({
                 alt="Luxury presentation of Gulab Jamun in cardamom syrup and creamy chilled Kheer in clay pot"
                 className="w-full h-auto aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 width={700}
                 height={525}
                 onError={(e) => {
@@ -102,7 +103,7 @@ export const DessertSection: React.FC<DessertSectionProps> = ({
                     <button
                       onClick={() => onAddToCart(item)}
                       disabled={!item.available}
-                      className={`inline-flex items-center gap-1.5 px-4 py-2 rounded text-xs font-semibold tracking-wider transition-all duration-200 ${
+                      className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0 ${
                         inCartQty > 0
                           ? 'bg-[#D7AE55] text-[#1B1924] font-bold shadow-md'
                           : 'bg-[#F7EBD2] text-[#1B1924] hover:bg-[#D7AE55]'
@@ -110,12 +111,12 @@ export const DessertSection: React.FC<DessertSectionProps> = ({
                     >
                       {inCartQty > 0 ? (
                         <>
-                          <Check className="w-3.5 h-3.5" />
+                          <Check className="w-3.5 h-3.5 shrink-0" />
                           <span>Added ({inCartQty})</span>
                         </>
                       ) : (
                         <>
-                          <Plus className="w-3.5 h-3.5" />
+                          <Plus className="w-3.5 h-3.5 shrink-0" />
                           <span>Add to Order</span>
                         </>
                       )}

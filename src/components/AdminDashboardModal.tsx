@@ -208,7 +208,8 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5"
+            className="p-2.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5 active:scale-95 transition-all cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Close Admin Portal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -247,7 +248,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="Karachi Bites or owner email"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-sm text-[#201D22] focus:outline-none focus:border-[#D7AE55]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-sm text-[#201D22] focus:outline-none focus:border-[#D7AE55] min-h-[44px]"
                 />
                 <span className="text-[10px] text-[#8C8479] block mt-1">
                   Accepts username <strong className="text-[#201D22]">Karachi Bites</strong> or owner email
@@ -263,14 +264,14 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-sm text-[#201D22] focus:outline-none focus:border-[#D7AE55]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-sm text-[#201D22] focus:outline-none focus:border-[#D7AE55] min-h-[44px]"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isLoggingIn}
-                className="w-full py-3 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider transition-all disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer touch-manipulation min-h-[48px] active:scale-[0.98]"
               >
                 {isLoggingIn ? (
                   <span>Authenticating...</span>
@@ -288,8 +289,8 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
           <div className="space-y-6">
             
             {/* Top Toolbar: Branch Filter, Date, Refresh & Logout */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white border border-[#201D22]/10">
-              <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-white border border-[#201D22]/10">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-semibold text-[#8C8479] flex items-center gap-1">
                   <Filter className="w-3.5 h-3.5" />
                   <span>Branch:</span>
@@ -298,10 +299,10 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                   <button
                     key={b}
                     onClick={() => setSelectedBranch(b)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                    className={`px-3 py-2 sm:py-1 rounded-xl sm:rounded-lg text-xs font-medium transition-all cursor-pointer touch-manipulation min-h-[36px] active:scale-95 flex items-center ${
                       selectedBranch === b
-                        ? 'bg-[#1B1924] text-[#E8C878] font-bold'
-                        : 'bg-[#F4E8D3]/50 text-[#6E675F] hover:bg-[#F4E8D3]'
+                        ? 'bg-[#1B1924] text-[#E8C878] font-bold shadow-xs'
+                        : 'bg-[#F4E8D3]/50 text-[#6E675F] hover:bg-[#F4E8D3] active:bg-[#F4E8D3]/80'
                     }`}
                   >
                     {b}
@@ -309,8 +310,8 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                 ))}
               </div>
 
-              <div className="flex items-center gap-2">
-                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#D7AE55]/15 border border-[#D7AE55]/30 text-[11px] text-[#8C6D27] font-medium">
+              <div className="flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#201D22]/8">
+                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#D7AE55]/15 border border-[#D7AE55]/30 text-[11px] text-[#8C6D27] font-medium">
                   <UserCheck className="w-3.5 h-3.5" />
                   <span>{currentUser.username} (Admin)</span>
                 </div>
@@ -318,13 +319,14 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                   onClick={fetchAdminOrders}
                   disabled={loadingOrders}
                   title="Refresh order queue"
-                  className="p-2 rounded-lg border border-[#201D22]/15 hover:bg-[#F4E8D3] text-[#201D22] transition-colors"
+                  className="p-2.5 rounded-xl border border-[#201D22]/15 hover:bg-[#F4E8D3] active:bg-[#F4E8D3]/80 text-[#201D22] transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center active:scale-95"
+                  aria-label="Refresh orders"
                 >
                   <RefreshCw className={`w-4 h-4 ${loadingOrders ? 'animate-spin' : ''}`} />
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-200 text-red-700 hover:bg-red-50 text-xs font-medium transition-colors"
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-red-200 text-red-700 hover:bg-red-50 active:bg-red-100 text-xs font-medium transition-colors cursor-pointer touch-manipulation min-h-[40px] active:scale-95"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Logout</span>
@@ -430,7 +432,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                         </div>
 
                         {/* Bottom Row: Total & Step Progression Button */}
-                        <div className="pt-2 border-t border-[#201D22]/8 flex items-center justify-between">
+                        <div className="pt-3 border-t border-[#201D22]/8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
                           <div className="text-xs">
                             <span className="text-[#8C8479]">Amount: </span>
                             <span className="font-serif font-bold text-base text-[#201D22] font-mono">
@@ -443,14 +445,14 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                             <button
                               onClick={() => handleAdvanceStatus(ord)}
                               disabled={updatingOrderId === ord.orderId}
-                              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] text-xs font-semibold uppercase tracking-wider transition-all disabled:opacity-60"
+                              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] text-xs font-semibold uppercase tracking-wider transition-all disabled:opacity-60 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.98] w-full sm:w-auto shadow-xs"
                             >
                               <span>Advance to {nextStatus}</span>
-                              <ChevronRight className="w-3.5 h-3.5" />
+                              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                             </button>
                           ) : (
-                            <div className="flex items-center gap-1 text-xs text-emerald-700 font-semibold">
-                              <CheckCircle2 className="w-4 h-4" />
+                            <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-semibold py-1">
+                              <CheckCircle2 className="w-4 h-4 shrink-0" />
                               <span>Order Completed</span>
                             </div>
                           )}

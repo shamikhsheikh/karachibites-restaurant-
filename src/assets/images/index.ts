@@ -2,6 +2,8 @@ import heroPakistaniFeast from './hero_pakistani_feast_1791648599401.jpg';
 import specialMuttonKarahi from './special_mutton_karahi_1791648611986.jpg';
 import dishChickenBiryani from './dish_chicken_biryani_1791648623964.jpg';
 import dessertGulabJamunKheer from './dessert_gulab_jamun_kheer_1791648636566.jpg';
+import dishGulabJamun from './dish_gulab_jamun_1791806796117.jpg';
+import dishKheer from './dish_kheer_1791806206708.jpg';
 import dishMalaiBoti from './dish_malai_boti_1791648671107.jpg';
 import dishSeekhKebab from './dish_seekh_kebab_1791648685182.jpg';
 import dishChickenKarahi from './dish_chicken_karahi_1791648696527.jpg';
@@ -16,6 +18,8 @@ export {
   specialMuttonKarahi,
   dishChickenBiryani,
   dessertGulabJamunKheer,
+  dishGulabJamun,
+  dishKheer,
   dishMalaiBoti,
   dishSeekhKebab,
   dishChickenKarahi,
@@ -34,6 +38,8 @@ export const ASSET_IMAGES_BY_FILENAME: Record<string, string> = {
   'special_mutton_karahi_1791648611986.jpg': specialMuttonKarahi,
   'dish_chicken_biryani_1791648623964.jpg': dishChickenBiryani,
   'dessert_gulab_jamun_kheer_1791648636566.jpg': dessertGulabJamunKheer,
+  'dish_gulab_jamun_1791806796117.jpg': dishGulabJamun,
+  'dish_kheer_1791806206708.jpg': dishKheer,
   'dish_malai_boti_1791648671107.jpg': dishMalaiBoti,
   'dish_seekh_kebab_1791648685182.jpg': dishSeekhKebab,
   'dish_chicken_karahi_1791648696527.jpg': dishChickenKarahi,
@@ -58,8 +64,8 @@ export const MENU_ITEM_IMAGES: Record<number, string> = {
   8: dishPaneerRoll,
   9: dishMintMargarita,
   10: dishDoodhPattiChai,
-  11: dessertGulabJamunKheer,
-  12: dessertGulabJamunKheer,
+  11: dishGulabJamun,
+  12: dishKheer,
 };
 
 /**

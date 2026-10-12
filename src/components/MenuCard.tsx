@@ -26,6 +26,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
           src={imgSrc}
           alt={item.name}
           loading="lazy"
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           width={400}
           height={300}
@@ -79,10 +80,10 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
           </p>
         </div>
 
-        {/* Price and Minimal Add Action */}
-        <div className="pt-3 border-t border-[#201D22]/8 flex items-center justify-between">
+        {/* Price and Responsive Add Action */}
+        <div className="pt-3 border-t border-[#201D22]/8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
           <div>
-            <span className="text-xs text-[#8C8479] block">Price</span>
+            <span className="text-[11px] text-[#8C8479] block">Price</span>
             <span className="font-serif text-lg sm:text-xl font-bold text-[#201D22] font-mono tabular-nums">
               Rs. {item.price}
             </span>
@@ -92,22 +93,22 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
             onClick={() => onAddToCart(item)}
             disabled={!item.available}
             aria-label={`Add ${item.name} to cart`}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded text-xs font-semibold tracking-wider transition-all duration-200 ${
+            className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0 ${
               !item.available
                 ? 'opacity-40 cursor-not-allowed bg-neutral-200 text-neutral-500'
                 : inCartQty > 0
-                ? 'bg-[#1B1924] text-[#E8C878] border border-[#D7AE55]/40 hover:bg-[#D7AE55] hover:text-[#1B1924]'
-                : 'bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924]'
+                ? 'bg-[#1B1924] text-[#E8C878] border border-[#D7AE55]/40 hover:bg-[#D7AE55] hover:text-[#1B1924] shadow-xs'
+                : 'bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] shadow-xs'
             }`}
           >
             {inCartQty > 0 ? (
               <>
-                <Check className="w-3.5 h-3.5" />
+                <Check className="w-3.5 h-3.5 shrink-0" />
                 <span>In Cart ({inCartQty})</span>
               </>
             ) : (
               <>
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-3.5 h-3.5 shrink-0" />
                 <span>Add to Cart</span>
               </>
             )}

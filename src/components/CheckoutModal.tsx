@@ -123,7 +123,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5"
+            className="p-2.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5 active:scale-95 transition-all cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Close Checkout"
           >
             <X className="w-5 h-5" />
           </button>
@@ -149,10 +150,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   key={b}
                   type="button"
                   onClick={() => setBranch(b)}
-                  className={`py-2.5 px-3 rounded-xl border text-xs font-medium text-left transition-all ${
+                  className={`py-3 px-3.5 rounded-xl border text-xs font-medium text-left transition-all cursor-pointer touch-manipulation min-h-[48px] active:scale-[0.98] ${
                     branch === b
                       ? 'border-[#D7AE55] bg-[#D7AE55]/15 text-[#8C6D27] font-bold shadow-2xs'
-                      : 'border-[#201D22]/15 bg-white text-[#6E675F] hover:border-[#D7AE55]/50'
+                      : 'border-[#201D22]/15 bg-white text-[#6E675F] hover:border-[#D7AE55]/50 active:bg-[#F4E8D3]/50'
                   }`}
                 >
                   <span className="block font-serif text-sm text-[#201D22]">{b}</span>
@@ -258,17 +259,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-4 sm:py-3.5 bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] rounded-xl font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer touch-manipulation min-h-[48px]"
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <Loader2 className="w-4 h-4 animate-spin shrink-0" />
                 <span>Confirming Order with Kitchen...</span>
               </>
             ) : (
               <>
                 <span>CONFIRM ORDER (Rs. {total})</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </>
             )}
           </button>

@@ -111,7 +111,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Warm, golden khoya milk dumplings soaked in aromatic cardamom and rose water sugar syrup, topped with slivered pistachios.',
-    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dish_gulab_jamun_1791806796117.jpg',
   },
   {
     id: 12,
@@ -121,6 +121,6 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Slow-cooked traditional rice pudding infused with saffron, condensed whole milk, green cardamom, and roasted almonds.',
-    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dish_kheer_1791806206708.jpg',
   },
 ];

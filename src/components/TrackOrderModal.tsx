@@ -117,7 +117,8 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5"
+            className="p-2.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5 active:scale-95 transition-all cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Close tracking"
           >
             <X className="w-5 h-5" />
           </button>
@@ -136,7 +137,7 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
                 value={orderId}
                 onChange={(e) => setOrderId(e.target.value)}
                 placeholder="e.g. KB-1001"
-                className="w-full px-3.5 py-2 rounded-xl border border-[#201D22]/15 bg-white text-xs font-mono uppercase text-[#201D22] focus:outline-none focus:border-[#D7AE55]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-xs font-mono uppercase text-[#201D22] focus:outline-none focus:border-[#D7AE55] min-h-[44px]"
               />
             </div>
             <div>
@@ -148,7 +149,7 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="e.g. 0300-1234567"
-                className="w-full px-3.5 py-2 rounded-xl border border-[#201D22]/15 bg-white text-xs font-mono text-[#201D22] focus:outline-none focus:border-[#D7AE55]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#201D22]/15 bg-white text-xs font-mono text-[#201D22] focus:outline-none focus:border-[#D7AE55] min-h-[44px]"
               />
             </div>
           </div>
@@ -156,16 +157,16 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all disabled:opacity-60"
+            className="w-full py-3.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98] disabled:opacity-60 cursor-pointer touch-manipulation min-h-[48px]"
           >
             {loading ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <Loader2 className="w-4 h-4 animate-spin shrink-0" />
                 <span>Checking Status...</span>
               </>
             ) : (
               <>
-                <Search className="w-3.5 h-3.5" />
+                <Search className="w-4 h-4 shrink-0" />
                 <span>FIND ORDER</span>
               </>
             )}

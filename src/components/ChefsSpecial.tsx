@@ -76,13 +76,13 @@ export const ChefsSpecial: React.FC<ChefsSpecialProps> = ({ onDiscoverMenu }) =>
             </div>
 
             {/* CTA */}
-            <div className="pt-2">
+            <div className="pt-2 w-full sm:w-auto">
               <button
                 onClick={onDiscoverMenu}
-                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200"
+                className="group inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl sm:rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 min-h-[44px] w-full sm:w-auto active:scale-[0.98] cursor-pointer touch-manipulation shadow-sm"
               >
                 <span>Discover Our Menu</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0" />
               </button>
             </div>
 

@@ -98,11 +98,11 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: Actions */}
-        <div className="flex items-center gap-2.5 md:gap-4 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={onFocusSearch}
             aria-label="Search Menu"
-            className="p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-full transition-colors"
+            className="p-2.5 sm:p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-full transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center active:scale-95"
           >
             <Search className="w-4 h-4 md:w-4.5 md:h-4.5" />
           </button>
@@ -111,9 +111,9 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenCart}
             aria-label="View Cart"
-            className="relative flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D7AE55]/40 bg-[#1B1924]/80 text-[#F7EBD2] hover:border-[#D7AE55] hover:bg-[#D7AE55]/15 transition-all text-xs font-medium"
+            className="relative flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-full border border-[#D7AE55]/40 bg-[#1B1924]/80 text-[#F7EBD2] hover:border-[#D7AE55] hover:bg-[#D7AE55]/15 transition-all text-xs font-medium cursor-pointer touch-manipulation min-h-[40px] active:scale-95"
           >
-            <ShoppingBag className="w-4 h-4 text-[#D7AE55]" />
+            <ShoppingBag className="w-4 h-4 text-[#D7AE55] shrink-0" />
             <span className="hidden sm:inline">Cart</span>
             {cartCount > 0 && (
               <span className="min-w-5 h-5 px-1 bg-[#D7AE55] text-[#1B1924] rounded-full text-[11px] font-bold flex items-center justify-center font-mono tabular-nums">
@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Primary CTA */}
           <button
             onClick={onOrderNow}
-            className="hidden sm:inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold tracking-wider uppercase text-[#1B1924] bg-[#D7AE55] hover:bg-[#E8C878] rounded transition-all duration-200 shadow-sm hover:shadow-[#D7AE55]/20"
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold tracking-wider uppercase text-[#1B1924] bg-[#D7AE55] hover:bg-[#E8C878] rounded transition-all duration-200 shadow-sm hover:shadow-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[40px] active:scale-95"
           >
             Order Now
           </button>
@@ -133,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55]"
+            className="lg:hidden p-2.5 sm:p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-xl transition-colors cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center active:scale-95"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
@@ -143,34 +143,34 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-3 p-5 rounded-2xl bg-[#1B1924] border border-[#D7AE55]/30 shadow-2xl text-[#F7EBD2] flex flex-col gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden mt-3 p-5 rounded-2xl bg-[#1B1924] border border-[#D7AE55]/30 shadow-2xl text-[#F7EBD2] flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-left py-2 border-b border-white/5 text-sm font-medium hover:text-[#D7AE55]"
+            className="text-left py-3 px-3 rounded-lg border-b border-white/5 text-sm font-medium hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px] flex items-center"
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection('menu-section')}
-            className="text-left py-2 border-b border-white/5 text-sm font-medium hover:text-[#D7AE55]"
+            className="text-left py-3 px-3 rounded-lg border-b border-white/5 text-sm font-medium hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px] flex items-center"
           >
             Menu Specialties
           </button>
           <button
             onClick={() => scrollToSection('chefs-special')}
-            className="text-left py-2 border-b border-white/5 text-sm font-medium hover:text-[#D7AE55]"
+            className="text-left py-3 px-3 rounded-lg border-b border-white/5 text-sm font-medium hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px] flex items-center"
           >
             Chef's Special (Karahi)
           </button>
           <button
             onClick={() => scrollToSection('sweet-finish')}
-            className="text-left py-2 border-b border-white/5 text-sm font-medium hover:text-[#D7AE55]"
+            className="text-left py-3 px-3 rounded-lg border-b border-white/5 text-sm font-medium hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px] flex items-center"
           >
             Traditional Desserts
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className="text-left py-2 border-b border-white/5 text-sm font-medium hover:text-[#D7AE55]"
+            className="text-left py-3 px-3 rounded-lg border-b border-white/5 text-sm font-medium hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px] flex items-center"
           >
             Our Branches & Heritage
           </button>
@@ -180,9 +180,9 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOpenTrack();
               }}
-              className="flex items-center gap-2 py-2 text-sm text-[#E8C878] font-medium"
+              className="flex items-center gap-2.5 py-3 px-3 rounded-lg text-sm text-[#E8C878] font-medium hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px]"
             >
-              <Compass className="w-4 h-4" />
+              <Compass className="w-4 h-4 shrink-0" />
               <span>Track Your Order</span>
             </button>
             <button
@@ -190,9 +190,9 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOpenAdmin();
               }}
-              className="flex items-center gap-2 py-2 text-xs text-[#BDB4A5] hover:text-[#D7AE55]"
+              className="flex items-center gap-2.5 py-3 px-3 rounded-lg text-xs text-[#BDB4A5] hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 active:bg-[#D7AE55]/20 cursor-pointer touch-manipulation min-h-[44px]"
             >
-              <ShieldCheck className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
               <span>Staff Portal</span>
             </button>
             <button
@@ -200,7 +200,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOrderNow();
               }}
-              className="mt-2 w-full py-2.5 text-center text-xs font-semibold uppercase tracking-wider bg-[#D7AE55] text-[#1B1924] rounded"
+              className="mt-2 w-full py-3.5 text-center text-xs font-semibold uppercase tracking-wider bg-[#D7AE55] text-[#1B1924] hover:bg-[#E8C878] active:scale-[0.98] rounded-xl cursor-pointer touch-manipulation min-h-[44px] shadow-md"
             >
               Order Now
             </button>

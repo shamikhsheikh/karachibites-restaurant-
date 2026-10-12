@@ -136,7 +136,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Warm, soft milk dumplings soaked in fragrant rose-cardamom syrup and dusted with crushed pistachios.',
-    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dish_gulab_jamun_1791806796117.jpg',
   },
   {
     id: 12,
@@ -146,7 +146,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Slow-cooked artisanal rice pudding infused with saffron, milk, and garnished with slivered almonds.',
-    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dish_kheer_1791806206708.jpg',
   },
 ];
 
