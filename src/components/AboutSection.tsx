@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Clock, Phone, ShieldCheck, Flame, UtensilsCrossed } from 'lucide-react';
+import chickenBiryani from '../assets/images/dish_chicken_biryani_1791648623964.jpg';
 
 export const AboutSection: React.FC = () => {
   const branches = [
@@ -62,12 +63,18 @@ export const AboutSection: React.FC = () => {
         <div className="lg:col-span-6">
           <div className="relative rounded-3xl overflow-hidden shadow-lg border border-[#201D22]/10 bg-[#1B1924]">
             <img
-              src="/src/assets/images/dish_chicken_biryani_1791648623964.jpg"
+              src={chickenBiryani || '/images/dish_chicken_biryani_1791648623964.jpg'}
               alt="Artisanal Karachi Dum Biryani with saffron rice, roasted spices, and slow simmered chicken"
               className="w-full h-auto aspect-[4/3] object-cover"
               loading="lazy"
               width={700}
               height={525}
+              onError={(e) => {
+                const img = e.currentTarget as HTMLImageElement;
+                if (!img.src.includes('/images/dish_chicken_biryani_1791648623964.jpg')) {
+                  img.src = '/images/dish_chicken_biryani_1791648623964.jpg';
+                }
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1B1924]/80 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-4 left-4 right-4 text-xs text-[#F7EBD2] flex items-center justify-between">

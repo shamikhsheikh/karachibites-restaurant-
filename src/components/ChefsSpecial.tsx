@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Clock, Flame } from 'lucide-react';
+import specialMuttonKarahi from '../assets/images/special_mutton_karahi_1791648611986.jpg';
 
 interface ChefsSpecialProps {
   onDiscoverMenu: () => void;
@@ -14,12 +15,18 @@ export const ChefsSpecial: React.FC<ChefsSpecialProps> = ({ onDiscoverMenu }) =>
           {/* LEFT: Large authentic photograph of Shinwari Mutton Karahi in cast iron wok */}
           <div className="lg:col-span-6 relative overflow-hidden min-h-[360px] lg:min-h-[500px] bg-[#1B1924]">
             <img
-              src="/src/assets/images/special_mutton_karahi_1791648611986.jpg"
+              src={specialMuttonKarahi || '/images/special_mutton_karahi_1791648611986.jpg'}
               alt="Artisanal Shinwari Mutton Karahi cooked in traditional cast iron wok with fresh ginger juliennes"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
               width={700}
               height={600}
+              onError={(e) => {
+                const img = e.currentTarget as HTMLImageElement;
+                if (!img.src.includes('/images/special_mutton_karahi_1791648611986.jpg')) {
+                  img.src = '/images/special_mutton_karahi_1791648611986.jpg';
+                }
+              }}
             />
             {/* Scrim Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1B1924]/80 via-transparent to-transparent lg:hidden" />

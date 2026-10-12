@@ -1,6 +1,7 @@
 import { MenuItem } from '../types.ts';
 
 // 12 Authentic Seed Menu Items matching the exact Karachi Bites brief
+// Root-relative URLs for Vite public directory assets: /images/[name].jpg
 export const INITIAL_MENU: MenuItem[] = [
   {
     id: 1,
@@ -10,7 +11,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['mild'],
     available: true,
     description: 'Tender boneless chicken marinated in a creamy blend of mild spices and yogurt, chargrilled to a smoky, melt-in-the-mouth finish.',
-    image: '/src/assets/images/dish_malai_boti_1791648671107.jpg',
+    image: '/images/dish_malai_boti_1791648671107.jpg',
   },
   {
     id: 2,
@@ -20,7 +21,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['spicy'],
     available: true,
     description: 'Authentic spiced minced beef skewers blended with traditional herbs, crushed cumin, and roasted slowly over live charcoal embers.',
-    image: '/src/assets/images/dish_seekh_kebab_1791648685182.jpg',
+    image: '/images/dish_seekh_kebab_1791648685182.jpg',
   },
   {
     id: 3,
@@ -30,7 +31,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['spicy'],
     available: true,
     description: 'Fresh tender mutton simmered in a cast iron karahi with ripe tomatoes, ginger juliennes, green chilies, and hand-ground black pepper.',
-    image: '/src/assets/images/special_mutton_karahi_1791648611986.jpg',
+    image: '/images/special_mutton_karahi_1791648611986.jpg',
   },
   {
     id: 4,
@@ -40,7 +41,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['spicy'],
     available: true,
     description: 'Succulent bone-in chicken braised with fragrant tomatoes, fresh coriander, ginger, and crushed red chilies in a sizzling wok.',
-    image: '/src/assets/images/dish_chicken_karahi_1791648696527.jpg',
+    image: '/images/dish_chicken_karahi_1791648696527.jpg',
   },
   {
     id: 5,
@@ -50,7 +51,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['spicy'],
     available: true,
     description: 'Traditional Karachi dum biryani with long-grain aged basmati rice, marinated spiced chicken, fried onions, and saffron aromas.',
-    image: '/src/assets/images/dish_chicken_biryani_1791648623964.jpg',
+    image: '/images/dish_chicken_biryani_1791648623964.jpg',
   },
   {
     id: 6,
@@ -60,7 +61,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Fragrant basmati rice gently cooked with farm-fresh garden peas, carrots, cumin seeds, and whole aromatic spices.',
-    image: '/src/assets/images/dish_veg_pulao_1791648764948.jpg',
+    image: '/images/dish_veg_pulao_1791648764948.jpg',
   },
   {
     id: 7,
@@ -70,7 +71,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['spicy'],
     available: true,
     description: 'Crispy golden fried chicken fillet rolled in a fresh crispy flaky paratha with spicy garlic mayonnaise sauce and thinly sliced onions.',
-    image: '/src/assets/images/dish_paratha_roll_1791648709001.jpg',
+    image: '/images/dish_paratha_roll_1791648709001.jpg',
   },
   {
     id: 8,
@@ -80,7 +81,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Chargrilled marinated cottage cheese cubes rolled in crisp paratha with fresh mint chutney, cabbage, and tangy chaat masala.',
-    image: '/src/assets/images/dish_paneer_roll_1791648778859.jpg',
+    image: '/images/dish_paneer_roll_1791648778859.jpg',
   },
   {
     id: 9,
@@ -90,7 +91,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Frosty and invigorating cooler made with freshly muddled mint, tangy lime juice, crushed ice, and a dash of black salt.',
-    image: '/src/assets/images/dish_mint_margarita_1791648792040.jpg',
+    image: '/images/dish_mint_margarita_1791648792040.jpg',
   },
   {
     id: 10,
@@ -100,7 +101,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Rich, comforting Pakistani karak chai brewed purely in whole dairy milk with crushed cardamom pods and slow simmered.',
-    image: '/src/assets/images/dish_doodh_patti_chai_1791648803039.jpg',
+    image: '/images/dish_doodh_patti_chai_1791648803039.jpg',
   },
   {
     id: 11,
@@ -110,7 +111,7 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Warm, golden khoya milk dumplings soaked in aromatic cardamom and rose water sugar syrup, topped with slivered pistachios.',
-    image: '/src/assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
   },
   {
     id: 12,
@@ -120,6 +121,6 @@ export const INITIAL_MENU: MenuItem[] = [
     tags: ['veg'],
     available: true,
     description: 'Slow-cooked traditional rice pudding infused with saffron, condensed whole milk, green cardamom, and roasted almonds.',
-    image: '/src/assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
   },
 ];

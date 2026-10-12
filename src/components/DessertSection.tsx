@@ -1,6 +1,7 @@
 import React from 'react';
 import { Plus, Check, Sparkles } from 'lucide-react';
 import { MenuItem } from '../types.ts';
+import dessertGulabJamunKheer from '../assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg';
 
 interface DessertSectionProps {
   dessertItems: MenuItem[];
@@ -40,12 +41,18 @@ export const DessertSection: React.FC<DessertSectionProps> = ({
           <div className="lg:col-span-7">
             <div className="relative rounded-2xl overflow-hidden border border-[#D7AE55]/30 shadow-2xl bg-[#201D29] group">
               <img
-                src="/src/assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg"
+                src={dessertGulabJamunKheer || '/images/dessert_gulab_jamun_kheer_1791648636566.jpg'}
                 alt="Luxury presentation of Gulab Jamun in cardamom syrup and creamy chilled Kheer in clay pot"
                 className="w-full h-auto aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
                 width={700}
                 height={525}
+                onError={(e) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  if (!img.src.includes('/images/dessert_gulab_jamun_kheer_1791648636566.jpg')) {
+                    img.src = '/images/dessert_gulab_jamun_kheer_1791648636566.jpg';
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B1924]/85 via-transparent to-transparent pointer-events-none" />
               

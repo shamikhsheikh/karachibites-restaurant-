@@ -36,7 +36,7 @@ export const MENU_ITEMS = [
     tags: ['mild'],
     available: true,
     description: 'Tender boneless chicken marinated in a creamy blend of mild spices, grilled to smoky perfection.',
-    image: '/src/assets/images/dish_malai_boti_1791648671107.jpg',
+    image: '/images/dish_malai_boti_1791648671107.jpg',
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ export const MENU_ITEMS = [
     tags: ['spicy'],
     available: true,
     description: 'Spiced minced beef skewers prepared with traditional herbs and roasted over charcoal.',
-    image: '/src/assets/images/dish_seekh_kebab_1791648685182.jpg',
+    image: '/images/dish_seekh_kebab_1791648685182.jpg',
   },
   {
     id: 3,
@@ -56,7 +56,7 @@ export const MENU_ITEMS = [
     tags: ['spicy'],
     available: true,
     description: 'Fresh tender mutton simmered in a rich tomato, ginger and crushed spice reduction in a traditional wok.',
-    image: '/src/assets/images/special_mutton_karahi_1791648611986.jpg',
+    image: '/images/special_mutton_karahi_1791648611986.jpg',
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ export const MENU_ITEMS = [
     tags: ['spicy'],
     available: true,
     description: 'Succulent bone-in chicken slow-cooked with fresh tomatoes, green chilies, and julienne ginger.',
-    image: '/src/assets/images/dish_chicken_karahi_1791648696527.jpg',
+    image: '/images/dish_chicken_karahi_1791648696527.jpg',
   },
   {
     id: 5,
@@ -76,7 +76,7 @@ export const MENU_ITEMS = [
     tags: ['spicy'],
     available: true,
     description: 'Authentic Karachi dum biryani layered with fragrant aged basmati rice, tender chicken, and saffron aromas.',
-    image: '/src/assets/images/dish_chicken_biryani_1791648623964.jpg',
+    image: '/images/dish_chicken_biryani_1791648623964.jpg',
   },
   {
     id: 6,
@@ -86,7 +86,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Fragrant basmati rice gently simmered with garden vegetables, cumin, and whole roasted spices.',
-    image: '/src/assets/images/dish_veg_pulao_1791648764948.jpg',
+    image: '/images/dish_veg_pulao_1791648764948.jpg',
   },
   {
     id: 7,
@@ -96,7 +96,7 @@ export const MENU_ITEMS = [
     tags: ['spicy'],
     available: true,
     description: 'Crispy fried chicken breast fillet wrapped in a golden layered paratha with spicy garlic cream sauce.',
-    image: '/src/assets/images/dish_paratha_roll_1791648709001.jpg',
+    image: '/images/dish_paratha_roll_1791648709001.jpg',
   },
   {
     id: 8,
@@ -106,7 +106,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Chargrilled marinated cottage cheese cubes rolled in crisp paratha with fresh mint chutney.',
-    image: '/src/assets/images/dish_paneer_roll_1791648778859.jpg',
+    image: '/images/dish_paneer_roll_1791648778859.jpg',
   },
   {
     id: 9,
@@ -116,7 +116,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Refreshing frosty cooler made with freshly muddled garden mint leaves, tangy lime juice, and soda.',
-    image: '/src/assets/images/dish_mint_margarita_1791648792040.jpg',
+    image: '/images/dish_mint_margarita_1791648792040.jpg',
   },
   {
     id: 10,
@@ -126,7 +126,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Traditional Pakistani karak chai brewed purely in whole milk with crushed green cardamom pods.',
-    image: '/src/assets/images/dish_doodh_patti_chai_1791648803039.jpg',
+    image: '/images/dish_doodh_patti_chai_1791648803039.jpg',
   },
   {
     id: 11,
@@ -136,7 +136,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Warm, soft milk dumplings soaked in fragrant rose-cardamom syrup and dusted with crushed pistachios.',
-    image: '/src/assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
   },
   {
     id: 12,
@@ -146,7 +146,7 @@ export const MENU_ITEMS = [
     tags: ['veg'],
     available: true,
     description: 'Slow-cooked artisanal rice pudding infused with saffron, milk, and garnished with slivered almonds.',
-    image: '/src/assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
+    image: '/images/dessert_gulab_jamun_kheer_1791648636566.jpg',
   },
 ];
 
@@ -272,7 +272,13 @@ export async function findUserByIdentifier(identifier: string): Promise<User | n
         throw new Error('Database query failure');
       }
 
-      if (!data) return null;
+      if (!data) {
+        if (process.env.NODE_ENV !== 'production') {
+          const users = loadUsersSync();
+          return users.find((u) => u.username.toLowerCase() === clean || u.email.toLowerCase() === clean) || null;
+        }
+        return null;
+      }
 
       return {
         id: data.id,

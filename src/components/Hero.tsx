@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Flame, MapPin } from 'lucide-react';
+import heroFeastImage from '../assets/images/hero_pakistani_feast_1791648599401.jpg';
 
 interface HeroProps {
   onOrderNow: () => void;
@@ -93,12 +94,18 @@ export const Hero: React.FC<HeroProps> = ({ onOrderNow, onExploreMenu }) => {
                 {/* Image Container */}
                 <div className="relative rounded-xl overflow-hidden shadow-2xl border border-[#D7AE55]/30 bg-[#201D29] group">
                   <img
-                    src="/src/assets/images/hero_pakistani_feast_1791648599401.jpg"
+                    src={heroFeastImage || '/images/hero_pakistani_feast_1791648599401.jpg'}
                     alt="Authentic Karachi Mixed BBQ Platter featuring Chicken Malai Boti and Beef Seekh Kebabs"
                     className="w-full h-auto aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="eager"
                     width={800}
                     height={600}
+                    onError={(e) => {
+                      const img = e.currentTarget as HTMLImageElement;
+                      if (!img.src.includes('/images/hero_pakistani_feast_1791648599401.jpg')) {
+                        img.src = '/images/hero_pakistani_feast_1791648599401.jpg';
+                      }
+                    }}
                   />
 
                   {/* Gradient Scrim for subtle contrast */}

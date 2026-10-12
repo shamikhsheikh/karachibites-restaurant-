@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Check, Flame, Leaf } from 'lucide-react';
 import { MenuItem } from '../types.ts';
+import { resolveItemImage, getFoodPlaceholderSvg } from '../assets/images/index.ts';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -11,21 +12,26 @@ interface MenuCardProps {
 export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart }) => {
   const isSpicy = item.tags.includes('spicy');
   const isVeg = item.tags.includes('veg');
+  const [imgSrc, setImgSrc] = useState(() => resolveItemImage(item.image, item.id));
+
+  useEffect(() => {
+    setImgSrc(resolveItemImage(item.image, item.id));
+  }, [item.image, item.id]);
 
   return (
     <div className="group flex flex-col justify-between rounded-2xl bg-[#FFF9EF] border border-[#201D22]/10 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#D7AE55]/60 hover:-translate-y-0.5">
       {/* Food Image Container */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1B1924]/10">
         <img
-          src={item.image}
+          src={imgSrc}
           alt={item.name}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           width={400}
           height={300}
-          onError={(e) => {
-            // Graceful fallback container if image fails
-            (e.currentTarget as HTMLElement).style.display = 'none';
+          onError={() => {
+            // Sensible graceful fallback if primary image fails
+            setImgSrc(getFoodPlaceholderSvg(item.name, item.category));
           }}
         />
 

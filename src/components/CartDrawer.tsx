@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Plus, Minus, Trash2, ArrowRight, ShoppingBag } from 'lucide-react';
 import { CartItem } from '../types.ts';
+import { resolveItemImage, getFoodPlaceholderSvg } from '../assets/images/index.ts';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -82,9 +83,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   >
                     {/* Item Thumbnail */}
                     <img
-                      src={menuItem.image}
+                      src={resolveItemImage(menuItem.image, menuItem.id)}
                       alt={menuItem.name}
                       className="w-14 h-14 rounded-lg object-cover bg-[#1B1924]/10 shrink-0"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = getFoodPlaceholderSvg(menuItem.name, menuItem.category);
+                      }}
                     />
 
                     {/* Details */}

@@ -83,9 +83,11 @@ export default function App() {
           // Merge API data with image paths if needed
           const merged = data.map((item) => {
             const fallback = INITIAL_MENU.find((m) => m.id === item.id);
+            const rawImage = item.image || fallback?.image || '';
+            const normalizedImage = rawImage.replace(/^\/src\/assets\/images\//, '/images/');
             return {
               ...item,
-              image: item.image || fallback?.image || '',
+              image: normalizedImage,
             };
           });
           setMenuItems(merged);
