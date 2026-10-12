@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Check, Flame, Leaf } from 'lucide-react';
+import { Plus, Minus, Trash2, Flame, Leaf } from 'lucide-react';
 import { MenuItem } from '../types.ts';
 import { resolveItemImage, getFoodPlaceholderSvg } from '../assets/images/index.ts';
 
@@ -7,9 +7,17 @@ interface MenuCardProps {
   item: MenuItem;
   inCartQty: number;
   onAddToCart: (item: MenuItem) => void;
+  onUpdateQty?: (itemId: number, delta: number) => void;
+  onRemoveItem?: (itemId: number) => void;
 }
 
-export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart }) => {
+export const MenuCard: React.FC<MenuCardProps> = ({
+  item,
+  inCartQty,
+  onAddToCart,
+  onUpdateQty,
+  onRemoveItem,
+}) => {
   const isSpicy = item.tags.includes('spicy');
   const isVeg = item.tags.includes('veg');
   const [imgSrc, setImgSrc] = useState(() => resolveItemImage(item.image, item.id));
@@ -65,7 +73,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
       <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-4">
         <div className="space-y-1.5">
           {/* Small Category */}
-          <span className="text-[11px] font-sans font-semibold tracking-[0.2em] text-[#D7AE55] uppercase block">
+          <span className="text-[11px] font-sans font-semibold tracking-[0.2em] text-[#8C6D27] uppercase block">
             {item.category}
           </span>
 
@@ -74,8 +82,8 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
             {item.name}
           </h3>
 
-          {/* Culinary Description */}
-          <p className="text-xs sm:text-[13px] text-[#6E675F] leading-relaxed line-clamp-2">
+          {/* Culinary Description with enhanced contrast */}
+          <p className="text-xs sm:text-[13px] text-[#3D3833] leading-relaxed line-clamp-2">
             {item.description}
           </p>
         </div>
@@ -89,30 +97,56 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, inCartQty, onAddToCart
             </span>
           </div>
 
-          <button
-            onClick={() => onAddToCart(item)}
-            disabled={!item.available}
-            aria-label={`Add ${item.name} to cart`}
-            className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0 ${
-              !item.available
-                ? 'opacity-40 cursor-not-allowed bg-neutral-200 text-neutral-500'
-                : inCartQty > 0
-                ? 'bg-[#1B1924] text-[#E8C878] border border-[#D7AE55]/40 hover:bg-[#D7AE55] hover:text-[#1B1924] shadow-xs'
-                : 'bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] shadow-xs'
-            }`}
-          >
-            {inCartQty > 0 ? (
-              <>
-                <Check className="w-3.5 h-3.5 shrink-0" />
-                <span>In Cart ({inCartQty})</span>
-              </>
-            ) : (
-              <>
-                <Plus className="w-3.5 h-3.5 shrink-0" />
-                <span>Add to Cart</span>
-              </>
-            )}
-          </button>
+          {!item.available ? (
+            <button
+              disabled
+              className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider opacity-40 cursor-not-allowed bg-neutral-200 text-neutral-500 w-full sm:w-auto"
+            >
+              Unavailable
+            </button>
+          ) : inCartQty > 0 ? (
+            /* Active Stepper Control directly in the card */
+            <div className="flex items-center gap-1.5 w-full sm:w-auto justify-end">
+              <button
+                onClick={() => onUpdateQty ? onUpdateQty(item.id, -1) : onAddToCart(item)}
+                className="w-9 h-9 rounded-xl border border-[#201D22]/20 bg-white hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 flex items-center justify-center text-[#201D22] transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px] shadow-2xs"
+                aria-label={`Decrease quantity of ${item.name}`}
+                title={inCartQty <= 1 ? "Minimum quantity is 1. Use the delete option to remove this item." : "Decrease quantity"}
+              >
+                <Minus className="w-3.5 h-3.5" />
+              </button>
+              <div className="px-3 py-1.5 rounded-xl bg-[#1B1924] text-[#E8C878] font-mono font-bold text-xs flex items-center gap-1 shadow-2xs">
+                <span>{inCartQty}</span>
+                <span className="text-[10px] text-[#BDB4A5] font-sans uppercase">in cart</span>
+              </div>
+              <button
+                onClick={() => onUpdateQty ? onUpdateQty(item.id, 1) : onAddToCart(item)}
+                className="w-9 h-9 rounded-xl border border-[#201D22]/20 bg-white hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 flex items-center justify-center text-[#201D22] transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px] shadow-2xs"
+                aria-label={`Increase quantity of ${item.name}`}
+              >
+                <Plus className="w-3.5 h-3.5" />
+              </button>
+              {onRemoveItem && (
+                <button
+                  onClick={() => onRemoveItem(item.id)}
+                  className="w-9 h-9 rounded-xl text-[#8C8479] hover:text-red-700 hover:bg-red-50 active:bg-red-100 flex items-center justify-center transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px]"
+                  aria-label={`Remove ${item.name} from cart`}
+                  title="Remove item"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => onAddToCart(item)}
+              aria-label={`Add ${item.name} to cart`}
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider bg-[#201D22] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] shadow-xs transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0"
+            >
+              <Plus className="w-3.5 h-3.5 shrink-0" />
+              <span>Add to Cart</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

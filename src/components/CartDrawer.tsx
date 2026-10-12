@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Plus, Minus, Trash2, ArrowRight, ShoppingBag } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Plus, Minus, Trash2, ArrowRight, ShoppingBag, AlertCircle } from 'lucide-react';
 import { CartItem } from '../types.ts';
 import { resolveItemImage, getFoodPlaceholderSvg } from '../assets/images/index.ts';
 
@@ -22,7 +22,32 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onProceedToCheckout,
   deliveryFee,
 }) => {
+  const [warningMessage, setWarningMessage] = useState<string | null>(null);
+
   if (!isOpen) return null;
+
+  const handleDecrement = (itemId: number, currentQty: number) => {
+    if (currentQty <= 1) {
+      setWarningMessage('Minimum quantity is 1. Use the delete option to remove this item.');
+      setTimeout(() => {
+        setWarningMessage((curr) => (curr?.includes('Minimum quantity is 1') ? null : curr));
+      }, 4000);
+      onUpdateQty(itemId, -1);
+      return;
+    }
+    setWarningMessage(null);
+    onUpdateQty(itemId, -1);
+  };
+
+  const handleIncrement = (itemId: number) => {
+    setWarningMessage(null);
+    onUpdateQty(itemId, 1);
+  };
+
+  const handleRemove = (itemId: number) => {
+    setWarningMessage(null);
+    onRemoveItem(itemId);
+  };
 
   const subtotal = cartItems.reduce(
     (acc, curr) => acc + curr.menuItem.price * curr.qty,
@@ -57,6 +82,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <X className="w-5 h-5" />
             </button>
           </div>
+
+          {/* Validation Banner if user attempts to decrement below 1 */}
+          {warningMessage && (
+            <div className="p-3 bg-amber-50 border-b border-amber-200 text-amber-900 text-xs flex items-center gap-2 px-6 animate-in fade-in duration-200">
+              <AlertCircle className="w-4 h-4 text-amber-700 shrink-0" />
+              <span className="font-medium">{warningMessage}</span>
+            </div>
+          )}
 
           {/* Cart Items List */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -106,9 +139,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       {/* Quantity Stepper */}
                       <div className="flex items-center gap-1 sm:gap-2 mt-2">
                         <button
-                          onClick={() => onUpdateQty(menuItem.id, -1)}
+                          onClick={() => handleDecrement(menuItem.id, qty)}
                           className="w-8 h-8 rounded-lg border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 transition-colors cursor-pointer touch-manipulation min-w-[32px] min-h-[32px]"
-                          aria-label="Decrease quantity"
+                          aria-label={`Decrease quantity of ${menuItem.name}`}
+                          title={qty <= 1 ? "Minimum quantity is 1. Use the delete option to remove this item." : "Decrease quantity"}
                         >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
@@ -116,20 +150,21 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           {qty}
                         </span>
                         <button
-                          onClick={() => onUpdateQty(menuItem.id, 1)}
+                          onClick={() => handleIncrement(menuItem.id)}
                           className="w-8 h-8 rounded-lg border border-[#201D22]/20 flex items-center justify-center text-[#201D22] hover:bg-[#F4E8D3] active:bg-[#D7AE55]/20 transition-colors cursor-pointer touch-manipulation min-w-[32px] min-h-[32px]"
-                          aria-label="Increase quantity"
+                          aria-label={`Increase quantity of ${menuItem.name}`}
                         >
                           <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </div>
 
-                    {/* Remove */}
+                    {/* Dedicated Delete / Remove Control */}
                     <button
-                      onClick={() => onRemoveItem(menuItem.id)}
+                      onClick={() => handleRemove(menuItem.id)}
                       className="p-2.5 text-[#8C8479] hover:text-red-700 active:text-red-800 transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-red-50"
-                      aria-label="Remove item"
+                      aria-label={`Remove ${menuItem.name} from cart`}
+                      title="Remove item"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>

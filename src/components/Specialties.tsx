@@ -7,6 +7,8 @@ interface SpecialtiesProps {
   menuItems: MenuItem[];
   cartItemCounts: Record<number, number>;
   onAddToCart: (item: MenuItem) => void;
+  onUpdateQty?: (itemId: number, delta: number) => void;
+  onRemoveItem?: (itemId: number) => void;
   searchRef?: React.RefObject<HTMLInputElement | null>;
 }
 
@@ -16,6 +18,8 @@ export const Specialties: React.FC<SpecialtiesProps> = ({
   menuItems,
   cartItemCounts,
   onAddToCart,
+  onUpdateQty,
+  onRemoveItem,
   searchRef,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -235,6 +239,8 @@ export const Specialties: React.FC<SpecialtiesProps> = ({
               item={item}
               inCartQty={cartItemCounts[item.id] || 0}
               onAddToCart={onAddToCart}
+              onUpdateQty={onUpdateQty}
+              onRemoveItem={onRemoveItem}
             />
           ))}
         </div>

@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="relative z-30 w-full pt-4 md:pt-6 pb-4 px-4 md:px-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between gap-4 md:gap-8 border-b border-[#D7AE55]/20 pb-4">
+      <div className="flex items-center justify-between gap-4 md:gap-8 border-b border-[#201D22]/10 pb-4">
         {/* Zone 1: Brand Wordmark */}
         <div className="flex items-center gap-3">
           <a
@@ -42,14 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
             className="group flex items-center gap-2.5 text-left focus:outline-none"
           >
             {/* Subtle Islamic 8-point geometric star emblem */}
-            <div className="w-8 h-8 rounded-sm bg-[#D7AE55]/15 border border-[#D7AE55]/40 flex items-center justify-center text-[#D7AE55] transition-transform duration-300 group-hover:rotate-45">
+            <div className="w-8 h-8 rounded-sm bg-[#1B1924] border border-[#D7AE55]/50 flex items-center justify-center text-[#D7AE55] transition-transform duration-300 group-hover:rotate-45 shadow-2xs">
               <span className="text-xs font-serif font-bold tracking-widest">KB</span>
             </div>
             <div>
-              <span className="block font-serif text-xl md:text-2xl font-bold tracking-[0.18em] text-[#F7EBD2] uppercase transition-colors group-hover:text-[#E8C878]">
+              <span className="block font-serif text-xl md:text-2xl font-bold tracking-[0.18em] text-[#201D22] uppercase transition-colors group-hover:text-[#8C6D27]">
                 KARACHI BITES
               </span>
-              <span className="block text-[10px] tracking-[0.25em] text-[#D7AE55] uppercase font-sans font-medium">
+              <span className="block text-[10px] tracking-[0.25em] text-[#8C6D27] uppercase font-sans font-semibold">
                 AUTHENTIC PAKISTANI FLAVOURS
               </span>
             </div>
@@ -57,40 +57,40 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Zone 2: Navigation Links (Desktop) */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs tracking-wider uppercase font-medium text-[#F7EBD2]/80">
+        <nav className="hidden lg:flex items-center gap-7 text-xs tracking-wider uppercase font-semibold text-[#201D22]">
           <button
             onClick={() => scrollToSection('hero')}
-            className="hover:text-[#D7AE55] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#D7AE55]"
+            className="hover:text-[#8C6D27] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#8C6D27]"
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection('menu-section')}
-            className="hover:text-[#D7AE55] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#D7AE55]"
+            className="hover:text-[#8C6D27] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#8C6D27]"
           >
             Menu
           </button>
           <button
             onClick={() => scrollToSection('chefs-special')}
-            className="hover:text-[#D7AE55] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#D7AE55]"
+            className="hover:text-[#8C6D27] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#8C6D27]"
           >
             Chef's Special
           </button>
           <button
             onClick={() => scrollToSection('sweet-finish')}
-            className="hover:text-[#D7AE55] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#D7AE55]"
+            className="hover:text-[#8C6D27] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#8C6D27]"
           >
             Desserts
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className="hover:text-[#D7AE55] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#D7AE55]"
+            className="hover:text-[#8C6D27] transition-colors py-1 relative hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:h-[1.5px] hover:after:bg-[#8C6D27]"
           >
             About Us
           </button>
           <button
             onClick={onOpenTrack}
-            className="hover:text-[#D7AE55] transition-colors flex items-center gap-1.5 text-[#E8C878]"
+            className="hover:text-[#201D22] transition-colors flex items-center gap-1.5 text-[#8C6D27] font-bold"
           >
             <Compass className="w-3.5 h-3.5" />
             <span>Track Order</span>
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onFocusSearch}
             aria-label="Search Menu"
-            className="p-2.5 sm:p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-full transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center active:scale-95"
+            className="p-2.5 sm:p-2 text-[#201D22] hover:text-[#8C6D27] hover:bg-[#201D22]/5 rounded-full transition-colors cursor-pointer touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center active:scale-95"
           >
             <Search className="w-4 h-4 md:w-4.5 md:h-4.5" />
           </button>
@@ -111,9 +111,9 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenCart}
             aria-label="View Cart"
-            className="relative flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-full border border-[#D7AE55]/40 bg-[#1B1924]/80 text-[#F7EBD2] hover:border-[#D7AE55] hover:bg-[#D7AE55]/15 transition-all text-xs font-medium cursor-pointer touch-manipulation min-h-[40px] active:scale-95"
+            className="relative flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-full border border-[#D7AE55]/50 bg-[#1B1924] text-[#F7EBD2] hover:bg-[#D7AE55] hover:text-[#1B1924] hover:border-[#D7AE55] transition-all text-xs font-semibold cursor-pointer touch-manipulation min-h-[40px] active:scale-95 shadow-2xs"
           >
-            <ShoppingBag className="w-4 h-4 text-[#D7AE55] shrink-0" />
+            <ShoppingBag className="w-4 h-4 text-[#D7AE55] shrink-0 group-hover:text-[#1B1924]" />
             <span className="hidden sm:inline">Cart</span>
             {cartCount > 0 && (
               <span className="min-w-5 h-5 px-1 bg-[#D7AE55] text-[#1B1924] rounded-full text-[11px] font-bold flex items-center justify-center font-mono tabular-nums">
@@ -133,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 sm:p-2 text-[#F7EBD2]/80 hover:text-[#D7AE55] hover:bg-[#D7AE55]/10 rounded-xl transition-colors cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center active:scale-95"
+            className="lg:hidden p-2.5 sm:p-2 text-[#201D22] hover:text-[#8C6D27] hover:bg-[#201D22]/5 rounded-xl transition-colors cursor-pointer touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center active:scale-95"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}

@@ -118,21 +118,36 @@ export default function App() {
   };
 
   const handleUpdateQty = (itemId: number, delta: number) => {
-    setCartItems((prev) =>
-      prev
-        .map((c) => {
-          if (c.menuItem.id === itemId) {
-            const newQty = c.qty + delta;
-            return newQty > 0 ? { ...c, qty: newQty } : null;
-          }
-          return c;
-        })
-        .filter(Boolean) as CartItem[]
-    );
+    setCartItems((prev) => {
+      const target = prev.find((c) => c.menuItem.id === itemId);
+      if (!target) return prev;
+
+      const newQty = target.qty + delta;
+      if (newQty < 1) {
+        setToastMessage('Minimum quantity is 1. Use the delete option to remove this item.');
+        setTimeout(() => {
+          setToastMessage((curr) => (curr?.includes('Minimum quantity is 1') ? null : curr));
+        }, 3200);
+        return prev;
+      }
+
+      return prev.map((c) =>
+        c.menuItem.id === itemId ? { ...c, qty: newQty } : c
+      );
+    });
   };
 
   const handleRemoveItem = (itemId: number) => {
-    setCartItems((prev) => prev.filter((c) => c.menuItem.id !== itemId));
+    setCartItems((prev) => {
+      const target = prev.find((c) => c.menuItem.id === itemId);
+      if (target) {
+        setToastMessage(`Removed ${target.menuItem.name} from order`);
+        setTimeout(() => {
+          setToastMessage((curr) => (curr?.includes(target.menuItem.name) ? null : curr));
+        }, 2200);
+      }
+      return prev.filter((c) => c.menuItem.id !== itemId);
+    });
   };
 
   const totalCartCount = cartItems.reduce((acc, curr) => acc + curr.qty, 0);
@@ -217,6 +232,8 @@ export default function App() {
           menuItems={menuItems}
           cartItemCounts={cartCountsMap}
           onAddToCart={handleAddToCart}
+          onUpdateQty={handleUpdateQty}
+          onRemoveItem={handleRemoveItem}
           searchRef={searchInputRef}
         />
 
@@ -233,6 +250,8 @@ export default function App() {
           dessertItems={dessertItems}
           cartItemCounts={cartCountsMap}
           onAddToCart={handleAddToCart}
+          onUpdateQty={handleUpdateQty}
+          onRemoveItem={handleRemoveItem}
         />
 
         {/* Heritage & 3 Branches Information */}
@@ -313,6 +332,7 @@ export default function App() {
       />
 
       <OrderConfirmationModal
+        isOpen={isConfirmOpen}
         order={confirmedOrder}
         onClose={() => setIsConfirmOpen(false)}
         onTrackOrder={handleTrackFromConfirm}

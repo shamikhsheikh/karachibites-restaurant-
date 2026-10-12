@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Check, Sparkles } from 'lucide-react';
+import { Plus, Minus, Trash2, Sparkles } from 'lucide-react';
 import { MenuItem } from '../types.ts';
 import dessertGulabJamunKheer from '../assets/images/dessert_gulab_jamun_kheer_1791648636566.jpg';
 
@@ -7,12 +7,16 @@ interface DessertSectionProps {
   dessertItems: MenuItem[];
   cartItemCounts: Record<number, number>;
   onAddToCart: (item: MenuItem) => void;
+  onUpdateQty?: (itemId: number, delta: number) => void;
+  onRemoveItem?: (itemId: number) => void;
 }
 
 export const DessertSection: React.FC<DessertSectionProps> = ({
   dessertItems,
   cartItemCounts,
   onAddToCart,
+  onUpdateQty,
+  onRemoveItem,
 }) => {
   return (
     <section id="sweet-finish" className="w-full px-3 sm:px-6 lg:px-8 py-10 md:py-16">
@@ -100,27 +104,54 @@ export const DessertSection: React.FC<DessertSectionProps> = ({
                       </span>
                     </div>
 
-                    <button
-                      onClick={() => onAddToCart(item)}
-                      disabled={!item.available}
-                      className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0 ${
-                        inCartQty > 0
-                          ? 'bg-[#D7AE55] text-[#1B1924] font-bold shadow-md'
-                          : 'bg-[#F7EBD2] text-[#1B1924] hover:bg-[#D7AE55]'
-                      }`}
-                    >
-                      {inCartQty > 0 ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 shrink-0" />
-                          <span>Added ({inCartQty})</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5 shrink-0" />
-                          <span>Add to Order</span>
-                        </>
-                      )}
-                    </button>
+                    {!item.available ? (
+                      <button
+                        disabled
+                        className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider opacity-40 cursor-not-allowed bg-neutral-700 text-neutral-400 w-full sm:w-auto"
+                      >
+                        Unavailable
+                      </button>
+                    ) : inCartQty > 0 ? (
+                      <div className="flex items-center gap-1.5 w-full sm:w-auto justify-end">
+                        <button
+                          onClick={() => onUpdateQty ? onUpdateQty(item.id, -1) : onAddToCart(item)}
+                          className="w-9 h-9 rounded-xl border border-white/20 bg-[#1B1924] hover:bg-white/10 active:bg-white/20 flex items-center justify-center text-[#F7EBD2] transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px]"
+                          aria-label={`Decrease quantity of ${item.name}`}
+                          title={inCartQty <= 1 ? "Minimum quantity is 1. Use the delete option to remove this item." : "Decrease quantity"}
+                        >
+                          <Minus className="w-3.5 h-3.5" />
+                        </button>
+                        <div className="px-3 py-1.5 rounded-xl bg-[#D7AE55] text-[#1B1924] font-mono font-bold text-xs flex items-center gap-1 shadow-md">
+                          <span>{inCartQty}</span>
+                          <span className="text-[10px] uppercase font-sans">in cart</span>
+                        </div>
+                        <button
+                          onClick={() => onUpdateQty ? onUpdateQty(item.id, 1) : onAddToCart(item)}
+                          className="w-9 h-9 rounded-xl border border-white/20 bg-[#1B1924] hover:bg-white/10 active:bg-white/20 flex items-center justify-center text-[#F7EBD2] transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px]"
+                          aria-label={`Increase quantity of ${item.name}`}
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                        </button>
+                        {onRemoveItem && (
+                          <button
+                            onClick={() => onRemoveItem(item.id)}
+                            className="w-9 h-9 rounded-xl text-[#BDB4A5] hover:text-red-400 hover:bg-red-500/10 flex items-center justify-center transition-colors cursor-pointer touch-manipulation min-w-[36px] min-h-[36px]"
+                            aria-label={`Remove ${item.name} from cart`}
+                            title="Remove item"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => onAddToCart(item)}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer touch-manipulation min-h-[44px] active:scale-[0.97] w-full sm:w-auto shrink-0 bg-[#F7EBD2] text-[#1B1924] hover:bg-[#D7AE55]"
+                      >
+                        <Plus className="w-3.5 h-3.5 shrink-0" />
+                        <span>Add to Order</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               );

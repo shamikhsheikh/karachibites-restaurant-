@@ -3,17 +3,19 @@ import { CheckCircle, Compass, ArrowRight, X } from 'lucide-react';
 import { Order } from '../types.ts';
 
 interface OrderConfirmationModalProps {
+  isOpen: boolean;
   order: Order | null;
   onClose: () => void;
   onTrackOrder: (orderId: string, phone: string) => void;
 }
 
 export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
+  isOpen,
   order,
   onClose,
   onTrackOrder,
 }) => {
-  if (!order) return null;
+  if (!isOpen || !order) return null;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
@@ -23,11 +25,14 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
       />
 
       <div className="relative bg-[#FFF9EF] border border-[#201D22]/15 rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 text-center space-y-6 animate-in zoom-in-95 duration-200">
+        {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/5"
+          aria-label="Close order confirmation"
+          className="absolute top-4 right-4 p-2 rounded-full text-[#8C8479] hover:text-[#201D22] hover:bg-[#201D22]/10 transition-colors z-20 cursor-pointer touch-manipulation focus:outline-hidden focus:ring-2 focus:ring-[#8C6D27]"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 pointer-events-none" />
         </button>
 
         {/* Success Icon */}
@@ -76,8 +81,9 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
         {/* Actions */}
         <div className="space-y-3 pt-2">
           <button
+            type="button"
             onClick={() => onTrackOrder(order.orderId, order.customer.phone)}
-            className="w-full py-3.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98] cursor-pointer touch-manipulation min-h-[48px]"
+            className="w-full py-3.5 bg-[#1B1924] text-[#E8C878] hover:bg-[#D7AE55] hover:text-[#1B1924] rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98] cursor-pointer touch-manipulation min-h-[48px] focus:outline-hidden focus:ring-2 focus:ring-[#8C6D27]"
           >
             <Compass className="w-4 h-4 shrink-0" />
             <span>TRACK LIVE PROGRESS</span>
@@ -85,8 +91,15 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
           </button>
 
           <button
-            onClick={onClose}
-            className="w-full py-3 text-xs text-[#6E675F] hover:text-[#201D22] font-medium rounded-xl hover:bg-[#201D22]/5 transition-colors cursor-pointer touch-manipulation min-h-[44px] flex items-center justify-center active:scale-[0.98]"
+            type="button"
+            onClick={() => {
+              onClose();
+              const el = document.getElementById('menu-section');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="w-full py-3 text-xs text-[#6E675F] hover:text-[#201D22] font-medium rounded-xl hover:bg-[#201D22]/5 transition-colors cursor-pointer touch-manipulation min-h-[44px] flex items-center justify-center active:scale-[0.98] focus:outline-hidden focus:ring-2 focus:ring-[#8C6D27]"
           >
             Back to Karachi Bites Menu
           </button>
